@@ -11,8 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.servlet.http.HttpSession;
-
 
 /**
  * @author：lanjy
@@ -23,7 +21,7 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class LoginController {
     @Autowired
-    private LoginService loginService;
+    private LoginService    loginService;
 
     @GetMapping(value = "/login")
     public String login() {

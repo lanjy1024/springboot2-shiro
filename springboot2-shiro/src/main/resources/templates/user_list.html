@@ -7,18 +7,18 @@
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
-<body  style="background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1592319600543&di=ca34cc9ac28378b1765c1d372ae54697&imgtype=0&src=http%3A%2F%2Fbpic.wotucdn.com%2F16%2F74%2F70%2F16747052-bb717ddd75eee34ba09181bf236083db.jpg')" >
+<body   >
 
 <nav class="navbar navbar-default" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
             <ul class="nav nav-tabs">
-                <li class="active"><a href="#">Home</a></li>
+                <li ><a href="#">Home</a></li>
                 <li><a href="#">系统管理</a></li>
                 <li><a href="#">商家管理</a></li>
-                <li><a href="/user/userlists" th:href="@{/user/userlists}">用户管理</a></li>
-                <li><a href="/user/userAdd" th:href="@{/user/userAdd}">广告管理</a></li>
-                <li><a href="/order/list" th:href="@{/order/list}">订单管理</a></li>
+                <li class="active"><a href="#" th:href="@{/user/userlists}">用户管理</a></li>
+                <li><a href="#" th:href="@{/user/userAdd}">广告管理</a></li>
+                <li><a href="#" th:href="@{/user/userDel}">订单管理</a></li>
             </ul>
         </div>
         <ul class="nav navbar-nav navbar-right">
@@ -42,7 +42,32 @@
         </ul>
     </div>
 </nav>
-<div class="container">
+<table class="table">
+    <thead>
+    <tr>
+        <th>姓名</th>
+        <th>入职日期</th>
+        <th>岗位</th></tr>
+    </thead>
+    <tbody>
+    <tr class="active">
+        <td>张三</td>
+        <td>23/11/2013</td>
+        <td>保安</td></tr>
+    <tr class="success">
+        <td>李四</td>
+        <td>10/11/2013</td>
+        <td>打手</td></tr>
+    <tr class="warning">
+        <td>王五</td>
+        <td>20/10/2013</td>
+        <td>产品</td></tr>
+    <tr class="danger">
+        <td>朱七</td>
+        <td>20/10/2013</td>
+        <td>司机</td></tr>
+    </tbody>
+</table>
      
 
 </div>

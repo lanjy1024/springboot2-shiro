@@ -14,8 +14,10 @@ import org.apache.shiro.authz.SimpleAuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.util.ByteSource;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @author：lanjy
@@ -59,19 +61,30 @@ public class MyShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         log.info("MyShiroRealm======权限信息");
-        SimpleAuthorizationInfo authorizationInfo = new SimpleAuthorizationInfo();
+        SimpleAuthorizationInfo simpleAuthorizationInfo = new SimpleAuthorizationInfo();
         //如果身份认证的时候没有传入User对象，这里只能取到userName
         //也就是SimpleAuthenticationInfo构造的时候第一个参数传递需要User对象
         User user  = (User)principals.getPrimaryPrincipal();
-        for(Role role : user.getRoleList()){
+        user.getRoleList().forEach(role -> {
             //添加角色
-            authorizationInfo.addRole(role.getRole());
+            simpleAuthorizationInfo.addRole(role.getRole());
+            List<Permission> permissions = role.getPermissions();
+            if(!CollectionUtils.isEmpty(permissions)){
+                permissions.forEach(permission ->{
+                    //添加权限
+                    simpleAuthorizationInfo.addStringPermission(permission.getPermission());
+                });
+            }
+        });
+        /*for(Role role : user.getRoleList()){
+            //添加角色
+            simpleAuthorizationInfo.addRole(role.getRole());
             for(Permission p:role.getPermissions()){
                 //添加权限
-                authorizationInfo.addStringPermission(p.getPermission());
+                simpleAuthorizationInfo.addStringPermission(p.getPermission());
             }
-        }
-        return authorizationInfo;
+        }*/
+        return simpleAuthorizationInfo;
     }
 
 }

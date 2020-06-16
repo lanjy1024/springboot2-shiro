@@ -15,7 +15,11 @@
 	<description>Demo project for Spring Boot</description>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
+		<hutool.version>5.3.7</hutool.version>
+		<mysql-connector.version>5.1.46</mysql-connector.version>
 	</properties>
 
 	<dependencies>
@@ -32,6 +36,11 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<!--<dependency>
+			<groupId>org.springframework.session</groupId>
+			<artifactId>spring-session</artifactId>
+		</dependency>-->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -42,15 +51,33 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.46</version>
+			<version>${mysql-connector.version}</version>
 		</dependency>
 		<!-- mysql数据库配置 end -->
 	    <!--shiro -->
 		<dependency>
 			<groupId>org.apache.shiro</groupId>
-			<artifactId>shiro-spring</artifactId>
-			<version>1.4.2</version>
+			<artifactId>shiro-spring-boot-starter</artifactId>
+			<version>1.5.3</version>
 		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.apache.shiro</groupId>-->
+			<!--<artifactId>shiro-ehcache</artifactId>-->
+			<!--<version>1.5.3</version>-->
+		<!--</dependency>-->
+		<dependency>
+			<groupId>org.apache.shiro</groupId>
+			<artifactId>shiro-spring</artifactId>
+			<version>1.5.3</version>
+		</dependency>
+		<!-- shiro+redis缓存插件 -->
+		<!--<dependency>
+			<groupId>org.crazycake</groupId>
+			<artifactId>shiro-redis</artifactId>
+			<version>2.4.2.1-RELEASE</version>
+			<scope>compile</scope>
+		</dependency>-->
+
         <!-- swagger -->
 		<dependency>
 			<groupId>io.springfox</groupId>
@@ -78,7 +105,12 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>cn.hutool</groupId>
+			<artifactId>hutool-all</artifactId>
+			<version>${hutool.version}</version>
+		</dependency>
+    </dependencies>
 
 	<build>
 		<plugins>
